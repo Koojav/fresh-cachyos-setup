@@ -8,7 +8,7 @@ source "$SCRIPT_DIR/helpers.sh"
 # Definitions
 # =============================================================================
 
-SECTIONS=("core" "dev" "gpu" "gaming" "comms")
+SECTIONS=("core" "desktop" "dev" "gpu" "gaming" "comms")
 
 # =============================================================================
 # Prerequisites
@@ -19,19 +19,17 @@ SECTIONS=("core" "dev" "gpu" "gaming" "comms")
 sudo pacman -S paru dialog
 
 # =============================================================================
-# DEVELOPMENT: base + git + shell
+# CORE: base + git + shell
 # =============================================================================
 
 function install_section_core {
-    show_dialog_section_begin "Core" "Browser, fonts, pretty terminal"
+    show_dialog_section_begin "Core" "Fonts, pretty terminal"
 
     # Base packages
     pkg_update
     pkg_upgrade
-    pkg_install htop
-
-    # Google Chrome
-    aur_install google-chrome-stable
+    
+    pkg_install htop 
     
     # Nerd fonts
     aur_install extra/ttf-firacode-nerd
@@ -41,6 +39,35 @@ function install_section_core {
 
     show_dialog_section_finished "Core"
 }
+
+# =============================================================================
+# DESKTOP ENVIRONMENT: Bringing Hyprland to state useful for a human being
+# =============================================================================
+
+function install_section_desktop {
+    show_dialog_section_begin "Desktop Environment" "Hyprland goes brrt."
+
+    # Google Chrome
+    aur_install google-chrome-stable
+
+    # Wallpaper utility
+    pkg_install hyprpaper
+
+    # Launcher / picker for Hyprland
+    pkg_install hyprlauncher
+
+    # Notifications daemon 
+    pkg_install dunst
+
+    # Status bar
+    pkg_install waybar
+
+    show_dialog_section_finished "Desktop Environment"
+}
+
+# =============================================================================
+# DEVELOPMENT: base + git + shell
+# =============================================================================
 
 function install_section_dev {
     show_dialog_section_begin "Development" "Python, Terraform, Docker, AWS-CLI"
@@ -117,7 +144,7 @@ function install_section_gaming {
 }
 
 # =============================================================================
-# Communicators - Slack, Vesktop (Discord)
+# COMMUNICATORS - Slack, Vesktop (Discord)
 # =============================================================================
 
 function install_section_gaming {
