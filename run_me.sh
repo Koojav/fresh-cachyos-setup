@@ -1,0 +1,169 @@
+#!/bin/bash
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/helpers.sh"
+
+# =============================================================================
+# Definitions
+# =============================================================================
+
+SECTIONS=("core" "dev" "gpu" "gaming")
+
+# =============================================================================
+# Prerequisites
+# =============================================================================
+
+# Install paru to access AUR (Arch User Repository)
+# Install dialog to display dialog windows with choices in text interface
+sudo pacman -S paru dialog
+
+# =============================================================================
+# DEVELOPMENT: base + git + shell
+# =============================================================================
+
+function install_section_core {
+    show_dialog_section_begin "Core" "Browser, fonts, pretty terminal"
+
+    # Base packages
+    pkg_update
+    pkg_upgrade
+    pkg_install htop
+
+    # Google Chrome
+    aur_install google-chrome-stable
+    
+    # Nerd fonts
+    aur_install extra/ttf-firacode-nerd
+
+    # Starship
+    curl -sS https://starship.rs/install.sh | sh -s -- -y
+
+    show_dialog_section_finished "Core"
+}
+
+function install_section_dev {
+    show_dialog_section_begin "Development" "Code development"
+
+    pkg_install base-devel tealdeer direnv python python-pip pyenv
+    
+    # Visual Studio Code
+    pkg_install code
+
+    # Git identity
+    local current_email=$(git config --global user.email 2>/dev/null)
+    local current_name=$(git config --global user.name 2>/dev/null)
+    local git_email=$(dialog --stdout --inputbox "Git email:" 8 50 "$current_email")
+    local git_name=$(dialog --stdout --inputbox "Git name:" 8 50 "$current_name")
+    [ -n "$git_email" ] && git config --global user.email "$git_email"
+    [ -n "$git_name" ] && git config --global user.name "$git_name"
+
+    show_dialog_section_finished "Development"
+}
+# =============================================================================
+# GPU: auto-detect and install drivers
+# =============================================================================
+
+function install_section_gpu {
+    local gpu_type=$(detect_gpu)
+    show_dialog_section_begin "GPU" "$gpu_type drivers"
+
+    case "$gpu_type" in
+        nvidia)
+            dialog --infobox "\nDetected NVIDIA GPU - installing drivers...\n" 5 50
+            pkg_install nvidia nvidia-utils lib32-nvidia-utils nvidia-settings
+            ;;
+        amd)
+            dialog --infobox "\nDetected AMD GPU - installing drivers...\n" 5 50
+            pkg_install mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon
+            ;;
+        intel)
+            dialog --infobox "\nDetected Intel GPU - installing drivers...\n" 5 50
+            pkg_install mesa lib32-mesa vulkan-intel lib32-vulkan-intel
+            ;;
+        *)
+            dialog --msgbox "\nCould not detect GPU type.\nPlease install drivers manually.\n" 8 50
+            return 1
+            ;;
+    esac
+
+    show_dialog_section_finished "$gpu_type drivers"
+}
+
+# =============================================================================
+# GAMING - CachyOS meta-packages
+# =============================================================================
+
+function install_section_gaming {
+    show_dialog_section_begin "Gaming" "CachyOS gaming packages"
+
+    # CachyOS gaming meta-packages
+    # - cachyos-gaming-meta: Proton, Wine, 32-bit libs, Vulkan tools, audio plugins
+    # - cachyos-gaming-applications: Steam, gamescope, mangohud, gamemode, launchers
+    pkg_install cachyos-gaming-meta cachyos-gaming-applications
+
+    show_dialog_section_finished "Gaming"
+}
+
+# =============================================================================
+# RUNNER
+# =============================================================================
+
+show_dialog_menu() {
+    local args=()
+    args+=("ALL" ">>> Install everything <<<" "OFF")
+    for i in "${!SECTIONS[@]}"; do
+        args+=("$((i+1))" "${SECTIONS[i]} - ${DESCRIPTIONS[i]}" "OFF")
+    done
+
+    local choices
+    choices=$(dialog --stdout --title "CachyOS Fresh Setup" \
+        --checklist "SPACE=toggle, ENTER=confirm" \
+        20 90 15 \
+        "${args[@]}")
+
+    echo "$choices"
+}
+
+function show_dialog_done() {
+    dialog --title " Complete " --msgbox "\nAll done! Press Enter to exit.\n" 7 45
+}
+
+install_sections() {
+    local indices="$1"
+
+    if [[ "$indices" == *"ALL"* ]]; then
+        for section in "${SECTIONS[@]}"; do
+            "install_section_${section}"
+        done
+        return
+    fi
+
+    for index in $indices; do
+        index="${index//\"/}"
+        local section="${SECTIONS[index-1]}"
+        "install_section_${section}"
+    done
+}
+
+main() {
+    local input=""
+
+    if [[ "$1" == "--all" ]]; then
+        input="ALL"
+
+    elif [[ "$#" -eq 0 ]]; then
+        input=$(show_dialog_menu)
+        if [[ -z "$input" ]]; then
+            echo "No sections selected. Exiting."
+            exit 0
+        fi
+
+    else
+        input="$*"
+    fi
+
+    install_sections "$input"
+}
+
+main "$@"
