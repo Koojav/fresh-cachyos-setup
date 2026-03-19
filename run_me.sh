@@ -8,7 +8,7 @@ source "$SCRIPT_DIR/helpers.sh"
 # Definitions
 # =============================================================================
 
-SECTIONS=("core" "dev" "gpu" "gaming")
+SECTIONS=("core" "dev" "gpu" "gaming" "comms")
 
 # =============================================================================
 # Prerequisites
@@ -43,12 +43,23 @@ function install_section_core {
 }
 
 function install_section_dev {
-    show_dialog_section_begin "Development" "Code development"
+    show_dialog_section_begin "Development" "Python, Terraform, Docker, AWS-CLI"
 
     pkg_install base-devel tealdeer direnv python python-pip pyenv
     
     # Visual Studio Code
     pkg_install code
+
+    # Docker
+    pkg_install docker docker-compose
+    sudo systemctl enable docker
+    sudo usermod -aG docker $USER
+
+    # Terraform 
+    pkg_install terraform
+
+    # AWS CLI
+    pkg_install aws-cli
 
     # Git identity
     local current_email=$(git config --global user.email 2>/dev/null)
@@ -103,6 +114,18 @@ function install_section_gaming {
     pkg_install cachyos-gaming-meta cachyos-gaming-applications
 
     show_dialog_section_finished "Gaming"
+}
+
+# =============================================================================
+# Communicators - Slack, Vesktop (Discord)
+# =============================================================================
+
+function install_section_gaming {
+    show_dialog_section_begin "Communicators" "Slack, Vencord"
+
+    aur_install vesktop-bin slack-desktop
+
+    show_dialog_section_finished "Communicators"
 }
 
 # =============================================================================
