@@ -67,7 +67,10 @@ function install_section_desktop {
 function install_section_dev {
     show_dialog_section_begin "Development" "Python, Terraform, Docker, Github CLI, AWS CLI"
 
-    pacman_install base-devel github-cli direnv python python-pip pyenv 
+    pacman_install base-devel github-cli direnv
+
+    # Python related
+    pacman_install tk python python-pip pyenv 
 
     # tldr command
     pacman_install tealdeer
@@ -107,24 +110,24 @@ function install_section_gpu {
 
     case "$gpu_type" in
         nvidia)
-            dialog --infobox "\nDetected NVIDIA GPU - installing drivers...\n" 5 50
             pacman_install nvidia nvidia-utils lib32-nvidia-utils nvidia-settings
+            show_dialog_section_finished "$gpu_type drivers installed"
             ;;
         amd)
-            dialog --infobox "\nDetected AMD GPU - installing drivers...\n" 5 50
             pacman_install mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon
+            show_dialog_section_finished "$gpu_type drivers installed"
             ;;
         intel)
-            dialog --infobox "\nDetected Intel GPU - installing drivers...\n" 5 50
             pacman_install mesa lib32-mesa vulkan-intel lib32-vulkan-intel
+            show_dialog_section_finished "$gpu_type drivers installed"
             ;;
         *)
-            dialog --msgbox "\nCould not detect GPU type.\nPlease install drivers manually.\n" 8 50
+            show_dialog_section_finished "$GPU NOT DETECTED - INSTALL DRIVERS MANUALLY"
             return 1
             ;;
     esac
 
-    show_dialog_section_finished "$gpu_type drivers"
+    
 }
 
 # =============================================================================
