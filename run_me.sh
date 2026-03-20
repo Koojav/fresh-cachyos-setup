@@ -55,7 +55,7 @@ function install_section_core {
 function install_section_desktop {
     show_dialog_section_begin "Desktop Environment" "GNOME related modifications"
 
-    -- #TODO
+    #TODO
 
     show_dialog_section_finished "Desktop Environment"
 }
