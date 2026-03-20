@@ -23,7 +23,7 @@ pkg_upgrade() {
     sudo pacman -Syu --noconfirm
 }
 
-pkg_install() {
+pacman_install() {
     sudo pacman -S --noconfirm --needed "$@"
 }
 

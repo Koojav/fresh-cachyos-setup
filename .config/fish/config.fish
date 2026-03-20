@@ -1,3 +1,6 @@
+# Source original CachyOS Fish helpers
+source /usr/share/cachyos-fish-config/cachyos-config.fish
+
 # Pyenv root
 set -gx PYENV_ROOT $HOME/.pyenv
 

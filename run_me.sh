@@ -29,13 +29,23 @@ function install_section_core {
     pkg_update
     pkg_upgrade
     
-    pkg_install htop 
+    pacman_install htop
     
+    # Google Chrome
+    aur_install google-chrome
+
     # Nerd fonts
     aur_install extra/ttf-firacode-nerd
 
     # Starship
     curl -sS https://starship.rs/install.sh | sh -s -- -y
+
+    # FZF - gigachad CTR-R search
+    pacman_install fzf
+
+    # Copy config files
+    cp "$(pwd)/.config/starship.toml" ~/.config/starship.toml
+    cp "$(pwd)/.config/fish/config.fish" ~/.config/fish/config.fish
 
     show_dialog_section_finished "Core"
 }
@@ -45,22 +55,9 @@ function install_section_core {
 # =============================================================================
 
 function install_section_desktop {
-    show_dialog_section_begin "Desktop Environment" "Hyprland goes brrt."
+    show_dialog_section_begin "Desktop Environment" "GNOME related modifications"
 
-    # Google Chrome
-    aur_install google-chrome-stable
-
-    # Wallpaper utility
-    pkg_install hyprpaper
-
-    # Launcher / picker for Hyprland
-    pkg_install hyprlauncher
-
-    # Notifications daemon 
-    pkg_install dunst
-
-    # Status bar
-    pkg_install waybar
+    -- #TODO
 
     show_dialog_section_finished "Desktop Environment"
 }
@@ -70,23 +67,27 @@ function install_section_desktop {
 # =============================================================================
 
 function install_section_dev {
-    show_dialog_section_begin "Development" "Python, Terraform, Docker, AWS-CLI"
+    show_dialog_section_begin "Development" "Python, Terraform, Docker, Github CLI, AWS CLI"
 
-    pkg_install base-devel tealdeer direnv python python-pip pyenv
-    
+    pacman_install base-devel github-cli direnv python python-pip pyenv 
+
+    # tldr command
+    pacman_install tealdeer
+    tldr --update
+
     # Visual Studio Code
-    pkg_install code
+    pacman_install code
 
     # Docker
-    pkg_install docker docker-compose
+    pacman_install docker docker-compose
     sudo systemctl enable docker
     sudo usermod -aG docker $USER
 
     # Terraform 
-    pkg_install terraform
+    pacman_install terraform
 
     # AWS CLI
-    pkg_install aws-cli
+    pacman_install aws-cli
 
     # Git identity
     local current_email=$(git config --global user.email 2>/dev/null)
@@ -109,15 +110,15 @@ function install_section_gpu {
     case "$gpu_type" in
         nvidia)
             dialog --infobox "\nDetected NVIDIA GPU - installing drivers...\n" 5 50
-            pkg_install nvidia nvidia-utils lib32-nvidia-utils nvidia-settings
+            pacman_install nvidia nvidia-utils lib32-nvidia-utils nvidia-settings
             ;;
         amd)
             dialog --infobox "\nDetected AMD GPU - installing drivers...\n" 5 50
-            pkg_install mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon
+            pacman_install mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon
             ;;
         intel)
             dialog --infobox "\nDetected Intel GPU - installing drivers...\n" 5 50
-            pkg_install mesa lib32-mesa vulkan-intel lib32-vulkan-intel
+            pacman_install mesa lib32-mesa vulkan-intel lib32-vulkan-intel
             ;;
         *)
             dialog --msgbox "\nCould not detect GPU type.\nPlease install drivers manually.\n" 8 50
@@ -138,7 +139,7 @@ function install_section_gaming {
     # CachyOS gaming meta-packages
     # - cachyos-gaming-meta: Proton, Wine, 32-bit libs, Vulkan tools, audio plugins
     # - cachyos-gaming-applications: Steam, gamescope, mangohud, gamemode, launchers
-    pkg_install cachyos-gaming-meta cachyos-gaming-applications
+    pacman_install cachyos-gaming-meta cachyos-gaming-applications
 
     show_dialog_section_finished "Gaming"
 }
@@ -147,10 +148,10 @@ function install_section_gaming {
 # COMMUNICATORS - Slack, Vesktop (Discord)
 # =============================================================================
 
-function install_section_gaming {
+function install_section_comms {
     show_dialog_section_begin "Communicators" "Slack, Vencord"
 
-    aur_install vesktop-bin slack-desktop
+    aur_install vesktop-bin slack-desktop-wayland
 
     show_dialog_section_finished "Communicators"
 }
