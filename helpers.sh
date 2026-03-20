@@ -15,11 +15,11 @@ show_dialog_section_finished() {
 # Package manager related
 # =============================================================================
 
-pkg_update() {
+pacman_update() {
     sudo pacman -Sy
 }
 
-pkg_upgrade() {
+pacman_upgrade() {
     sudo pacman -Syu --noconfirm
 }
 

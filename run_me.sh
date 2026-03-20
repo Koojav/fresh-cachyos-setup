@@ -16,7 +16,7 @@ SECTIONS=("core" "desktop" "dev" "gpu" "gaming" "comms")
 
 # Install paru to access AUR (Arch User Repository)
 # Install dialog to display dialog windows with choices in text interface
-sudo pacman -S paru dialog
+pacman_install paru dialog
 
 # =============================================================================
 # CORE: base + git + shell
@@ -26,11 +26,9 @@ function install_section_core {
     show_dialog_section_begin "Core" "Fonts, pretty terminal"
 
     # Base packages
-    pkg_update
-    pkg_upgrade
-    
-    pacman_install htop
-    
+    pacman_update
+    pacman_upgrade
+
     # Google Chrome
     aur_install google-chrome
 
