@@ -57,14 +57,21 @@ function install_section_hyprland {
     show_dialog_section_begin "Desktop Environment" "Hyprland related modifications"
 
     # Fix file selector opened by VS Code
-    pacman_install -S xdg-desktop-portal xdg-desktop-portal-hyprland
+    pacman_install xdg-desktop-portal xdg-desktop-portal-hyprland
 
     # Install Rofi - launcher 
-    pacman_install -S rofi-wayland
+    # Customized via .config/rofi 
+    pacman_install rofi-wayland
+    cp -r "$(pwd)/.config/rofi" ~/.config
 
     # Install hyprpicker - color picker
-    pacman_install -S hyprpicker
-    
+    pacman_install hyprpicker
+
+    # Install Waybar - customizable info bar
+    sudo usermod -aG input $USER
+    pacman_install waybar
+    cp -r "$(pwd)/.config/waybar" ~/.config
+
     show_dialog_section_finished "Desktop Environment"
 }
 
