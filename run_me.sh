@@ -8,7 +8,7 @@ source "$SCRIPT_DIR/helpers.sh"
 # Definitions
 # =============================================================================
 
-SECTIONS=("core" "desktop" "dev" "gpu" "gaming" "comms")
+SECTIONS=("core" "hyprland" "dev" "gpu" "gaming" "comms")
 
 # =============================================================================
 # Prerequisites
@@ -52,10 +52,10 @@ function install_section_core {
 # DESKTOP ENVIRONMENT: Bringing Hyprland to state useful for a human being
 # =============================================================================
 
-function install_section_desktop {
-    show_dialog_section_begin "Desktop Environment" "GNOME related modifications"
+function install_section_hyprland {
+    show_dialog_section_begin "Desktop Environment" "Hyprland related modifications"
 
-    #TODO
+    sudo pacman -S xdg-desktop-portal xdg-desktop-portal-hyprland
 
     show_dialog_section_finished "Desktop Environment"
 }

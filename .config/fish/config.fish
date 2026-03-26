@@ -1,6 +1,10 @@
 # Source original CachyOS Fish helpers
 source /usr/share/cachyos-fish-config/cachyos-config.fish
 
+# Remove default Fish greeting defined in the above cachyos-config.fish
+function fish_greeting
+end
+
 # Pyenv root
 set -gx PYENV_ROOT $HOME/.pyenv
 
