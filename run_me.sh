@@ -42,8 +42,9 @@ function install_section_core {
     pacman_install fzf
 
     # Copy config files
-    cp "$(pwd)/.config/starship.toml" ~/.config/starship.toml
-    cp "$(pwd)/.config/fish/config.fish" ~/.config/fish/config.fish
+    mkdir -p ~./config && cp "$(pwd)/.config/starship.toml" ~/.config/starship.toml
+    cp -r "$(pwd)/.config/fish" ~/.config
+    cp -r "$(pwd)/.config/kitty" ~/.config
 
     show_dialog_section_finished "Core"
 }
@@ -60,6 +61,9 @@ function install_section_hyprland {
 
     # Install Rofi - launcher 
     pacman_install -S rofi-wayland
+
+    # Install hyprpicker - color picker
+    pacman_install -S hyprpicker
     
     show_dialog_section_finished "Desktop Environment"
 }
