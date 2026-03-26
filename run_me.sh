@@ -55,8 +55,12 @@ function install_section_core {
 function install_section_hyprland {
     show_dialog_section_begin "Desktop Environment" "Hyprland related modifications"
 
-    sudo pacman -S xdg-desktop-portal xdg-desktop-portal-hyprland
+    # Fix file selector opened by VS Code
+    pacman_install -S xdg-desktop-portal xdg-desktop-portal-hyprland
 
+    # Install Rofi - launcher 
+    pacman_install -S rofi-wayland
+    
     show_dialog_section_finished "Desktop Environment"
 }
 
