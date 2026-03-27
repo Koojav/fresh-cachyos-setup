@@ -56,6 +56,8 @@ function install_section_core {
 function install_section_hyprland {
     show_dialog_section_begin "Desktop Environment" "Hyprland related modifications"
 
+    mkdir -p ~/.config/hypr
+
     # Fix file selector opened by VS Code
     pacman_install xdg-desktop-portal xdg-desktop-portal-hyprland
 
@@ -72,6 +74,11 @@ function install_section_hyprland {
     # See: https://github.com/adi1090x/rofi/tree/master?tab=readme-ov-file for sample themes and applets
     pacman_install rofi-wayland
     cp -r "$(pwd)/.config/rofi" ~/.config
+
+    # Install simple wallpaper utility
+    pacman_install hyprpaper
+    cp "$(pwd)/.config/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
+    cp "$(pwd)/.config/hypr/wallpaper.jpg" ~/.config/hypr/wallpaper.jpg
 
     # Install hyprpicker - color picker
     pacman_install hyprpicker
