@@ -59,6 +59,10 @@ function install_section_hyprland {
     # Fix file selector opened by VS Code
     pacman_install xdg-desktop-portal xdg-desktop-portal-hyprland
 
+    # Hyprpolkitagent - required for GUI to request elevated privileges
+    # https://wiki.hypr.land/Hypr-Ecosystem/hyprpolkitagent/
+    pacman_install hyprpolkitagent
+
     # Install Rofi - launcher 
     # Customized via .config/rofi 
     pacman_install rofi-wayland
