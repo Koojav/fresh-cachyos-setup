@@ -69,6 +69,7 @@ function install_section_hyprland {
 
     # Install Rofi - launcher 
     # Customized via .config/rofi 
+    # See: https://github.com/adi1090x/rofi/tree/master?tab=readme-ov-file for sample themes and applets
     pacman_install rofi-wayland
     cp -r "$(pwd)/.config/rofi" ~/.config
 
