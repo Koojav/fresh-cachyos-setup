@@ -63,6 +63,10 @@ function install_section_hyprland {
     # https://wiki.hypr.land/Hypr-Ecosystem/hyprpolkitagent/
     pacman_install hyprpolkitagent
 
+    # Brightnessctl - control screen brightness
+    # Gammastep - night light
+    pacman_install brightnessctl gammastep
+
     # Install Rofi - launcher 
     # Customized via .config/rofi 
     pacman_install rofi-wayland
@@ -75,6 +79,8 @@ function install_section_hyprland {
     sudo usermod -aG input $USER
     pacman_install waybar
     cp -r "$(pwd)/.config/waybar" ~/.config
+
+
 
     show_dialog_section_finished "Desktop Environment"
 }
