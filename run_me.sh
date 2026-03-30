@@ -58,6 +58,10 @@ function install_section_hyprland {
 
     mkdir -p ~/.config/hypr
 
+    # Copy GTK 3.0 and GTK 4.0 (GUI frameworks) settings
+    cp -r "$(pwd)/.config/gtk-3.0" ~/.config
+    cp -r "$(pwd)/.config/gtk-4.0" ~/.config
+
     # Fix file selector opened by VS Code
     pacman_install xdg-desktop-portal xdg-desktop-portal-hyprland
 
