@@ -98,9 +98,6 @@ function install_section_hyprland {
     # Control panel
     aur_install better-control-git
     
-    # Notifications daemon
-    pacman_install dunst
-
     show_dialog_section_finished "Desktop Environment"
 }
 
