@@ -6,9 +6,7 @@
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": [
-        "hyprland/window"
-    ],
+    "modules-left": [],
     "modules-center": [
         "hyprland/workspaces"
     ],
@@ -47,11 +45,11 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
+        "format": "{icon}  {format_source}",
+        "format-bluetooth": "{icon}  {format_source}",
+        "format-bluetooth-muted": "x {icon}  {format_source}",
+        "format-muted": "x  {format_source}",
+        "format-source": "",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
