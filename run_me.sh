@@ -82,9 +82,12 @@ function install_section_hyprland {
     # Simple wallpaper utility
     pacman_install hyprpaper
     
-
     # Color picker
     pacman_install hyprpicker
+
+    # Screenshot utility
+    # Some of it's functions rely on hyprpicker
+    aur_install hyprshot
 
     # Customizable info bar
     sudo usermod -aG input $USER
