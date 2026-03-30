@@ -69,27 +69,31 @@ function install_section_hyprland {
     # Gammastep - night light
     pacman_install brightnessctl gammastep
 
-    # Install Rofi - launcher 
+    # Rofi - launcher 
     # Customized via .config/rofi 
     # See: https://github.com/adi1090x/rofi/tree/master?tab=readme-ov-file for sample themes and applets
     pacman_install rofi-wayland
     cp -r "$(pwd)/.config/rofi" ~/.config
 
-    # Install simple wallpaper utility
+    # Simple wallpaper utility
     pacman_install hyprpaper
     cp "$(pwd)/.config/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
     cp "$(pwd)/.config/hypr/wallpaper.jpg" ~/.config/hypr/wallpaper.jpg
 
-    # Install hyprpicker - color picker
+    # Color picker
     pacman_install hyprpicker
 
-    # Install Waybar - customizable info bar
+    # Customizable info bar
     sudo usermod -aG input $USER
     pacman_install waybar
     cp -r "$(pwd)/.config/waybar" ~/.config
 
+    # Screen share picker
+    aur_install hyprland-preview-share-picker-git
 
-
+    # Control panel
+    aur_install better-control-git
+    
     show_dialog_section_finished "Desktop Environment"
 }
 
