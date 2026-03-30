@@ -42,7 +42,7 @@ function install_section_core {
     pacman_install fzf
 
     # Copy config files
-    mkdir -p ~./config && cp "$(pwd)/.config/starship.toml" ~/.config/starship.toml
+    mkdir -p ~/.config && cp "$(pwd)/.config/starship.toml" ~/.config/starship.toml
     cp -r "$(pwd)/.config/fish" ~/.config
     cp -r "$(pwd)/.config/kitty" ~/.config
 
@@ -56,7 +56,7 @@ function install_section_core {
 function install_section_hyprland {
     show_dialog_section_begin "Desktop Environment" "Hyprland related modifications"
 
-    mkdir -p ~/.config/hypr
+    cp -r "$(pwd)/.config/hypr" ~/.config
 
     # Copy GTK 3.0 and GTK 4.0 (GUI frameworks) settings
     cp -r "$(pwd)/.config/gtk-3.0" ~/.config
@@ -81,8 +81,7 @@ function install_section_hyprland {
 
     # Simple wallpaper utility
     pacman_install hyprpaper
-    cp "$(pwd)/.config/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
-    cp "$(pwd)/.config/hypr/wallpaper.jpg" ~/.config/hypr/wallpaper.jpg
+    
 
     # Color picker
     pacman_install hyprpicker
