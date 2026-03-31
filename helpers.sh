@@ -16,7 +16,7 @@ show_dialog_section_finished() {
 # =============================================================================
 
 pacman_update() {
-    sudo pacman -Sy
+    sudo pacman -Syy
 }
 
 pacman_upgrade() {
