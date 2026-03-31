@@ -13,6 +13,7 @@
     "modules-right": [
         "tray",
         "pulseaudio",
+        "custom/hyprshot",
         "network",
         "battery",
         "clock"
@@ -61,5 +62,11 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
-    }
+    },
+    "custom/hyprshot": {
+    "exec": "echo '󰄄 '",      // icon to display
+    "interval": 3600,        // static, doesn’t really update
+    "tooltip": "Take screenshot",
+    "on-click": "hyprshot-gui"
+}
 }

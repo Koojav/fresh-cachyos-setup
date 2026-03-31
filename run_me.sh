@@ -87,7 +87,9 @@ function install_section_hyprland {
 
     # Screenshot utility
     # Some of it's functions rely on hyprpicker
+    # GUI is a separate project, used later on in Waybar
     aur_install hyprshot
+    aur_install hyprshot-gui
 
     # Customizable info bar
     sudo usermod -aG input $USER
@@ -100,6 +102,11 @@ function install_section_hyprland {
     # Control panel
     aur_install better-control-git
     
+    # Kanshi allows for defining monitor setups 
+    # pure Hyprland does not allow conditional settings
+    # eg. turn off laptop screen when docked
+    pacman_install kanshi
+
     show_dialog_section_finished "Desktop Environment"
 }
 
