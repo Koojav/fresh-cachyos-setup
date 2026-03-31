@@ -107,6 +107,9 @@ function install_section_hyprland {
     # eg. turn off laptop screen when docked
     pacman_install kanshi
 
+    # Run 'kanshi-setup' to detect your monitors if you want to modify the config
+    cp -r "$(pwd)/.config/kanshi" ~/.config
+
     show_dialog_section_finished "Desktop Environment"
 }
 
