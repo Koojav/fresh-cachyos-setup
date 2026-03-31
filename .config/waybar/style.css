@@ -12,7 +12,7 @@ window#waybar {
     color: #c8c8c8;
 }
 
-.modules-right {
+.modules-left {
 	background-color: rgba(11, 14, 14, 0.35);
     color: #c8c8c8;
     margin: 5px 0px 5px 0px;
@@ -24,10 +24,10 @@ window#waybar {
     margin: 5px 0px 5px 0px;
 }
 
-.modules-left {
+.modules-right {
 	background-color: rgba(11, 14, 14, 0.35);
     color: #c8c8c8;
-    margin: 5px 0px 5px 0px;
+    margin: 5px 5px 5px 0px;
 }
 
 /* Workspaces */
