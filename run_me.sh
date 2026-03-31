@@ -119,8 +119,8 @@ function install_section_dev {
     pacman_install tealdeer
     tldr --update
 
-    # Visual Studio Code
-    pacman_install code
+    # Visual Studio Code (official, not some OSS bullshit)
+    aur_install visual-studio-code-bin
 
     # Docker
     pacman_install docker docker-compose

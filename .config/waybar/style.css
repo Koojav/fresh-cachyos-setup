@@ -15,19 +15,19 @@ window#waybar {
 .modules-right {
 	background-color: rgba(11, 14, 14, 0.35);
     color: #c8c8c8;
-    margin: 0px 0px 2px 0px;
+    margin: 5px 0px 5px 0px;
 }
 
 .modules-center {
 	background-color: rgba(11, 14, 14, 0.35);
     color: #c8c8c8;
-    margin: 0px 0px 2px 0px;
+    margin: 5px 0px 5px 0px;
 }
 
 .modules-left {
 	background-color: rgba(11, 14, 14, 0.35);
     color: #c8c8c8;
-    margin: 0px 0px 2px 0px;
+    margin: 5px 0px 5px 0px;
 }
 
 /* Workspaces */
