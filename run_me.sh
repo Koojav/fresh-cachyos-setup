@@ -69,6 +69,11 @@ function install_section_hyprland {
     # https://wiki.hypr.land/Hypr-Ecosystem/hyprpolkitagent/
     pacman_install hyprpolkitagent
 
+    # Idle state registration, screen locking etc.
+    # https://wiki.hypr.land/Hypr-Ecosystem/hypridle/
+    # https://wiki.hypr.land/Hypr-Ecosystem/hyprlock/
+    pacman_install hyprlock hypridle
+
     # Brightnessctl - control screen brightness
     # Gammastep - night light
     pacman_install brightnessctl gammastep
