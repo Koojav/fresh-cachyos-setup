@@ -102,6 +102,7 @@ function install_section_hyprland {
     cp -r "$(pwd)/.config/waybar" ~/.config
 
     # Screen share picker
+    # https://github.com/WhySoBad/hyprland-preview-share-picker
     aur_install hyprland-preview-share-picker-git
 
     # Control panel

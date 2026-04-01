@@ -33,7 +33,7 @@
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
@@ -64,9 +64,9 @@
         "on-click": "pavucontrol"
     },
     "custom/hyprshot": {
-    "exec": "echo '󰄄 '",      // icon to display
-    "interval": 3600,        // static, doesn’t really update
+    "exec": "echo '󰄄 '",
+    "interval": 3600,
     "tooltip": "Take screenshot",
-    "on-click": "hyprshot-gui"
+    "on-click": "hyprshot-gui --clipboard-only"
 }
 }
