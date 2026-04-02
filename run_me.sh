@@ -108,6 +108,10 @@ function install_section_hyprland {
     # Control panel
     aur_install better-control-git
     
+    # Bluetooth drivers, stack with agent, GTK applet
+    aur_install xpadneo-dkms
+    pacman_install bluez bluez-utils blueman
+
     # Kanshi allows for defining monitor setups 
     # pure Hyprland does not allow conditional settings
     # eg. turn off laptop screen when docked
