@@ -14,6 +14,7 @@
         "tray",
         "pulseaudio",
         "custom/hyprshot",
+        "custom/bluetooth",
         "network",
         "battery",
         "clock"
@@ -64,9 +65,15 @@
         "on-click": "pavucontrol"
     },
     "custom/hyprshot": {
-    "exec": "echo '󰄄 '",
-    "interval": 3600,
-    "tooltip": "Take screenshot",
-    "on-click": "hyprshot-gui --clipboard-only"
-}
+        "exec": "echo '󰄄  '",
+        "interval": 3600,
+        "tooltip": "Take screenshot",
+        "on-click": "hyprshot-gui --clipboard-only"
+    },
+    "custom/bluetooth": {
+        "exec": "echo '󰂯  '",
+        "interval": 3600,
+        "tooltip": "Open Bluetooth manager",
+        "on-click": "blueman-manager"
+    }
 }
