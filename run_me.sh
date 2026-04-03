@@ -188,9 +188,7 @@ function install_section_gpu {
             show_dialog_section_finished "$GPU NOT DETECTED - INSTALL DRIVERS MANUALLY"
             return 1
             ;;
-    esac
-
-    
+    esac 
 }
 
 # =============================================================================
@@ -202,8 +200,22 @@ function install_section_gaming {
 
     # CachyOS gaming meta-packages
     # - cachyos-gaming-meta: Proton, Wine, 32-bit libs, Vulkan tools, audio plugins
-    # - cachyos-gaming-applications: Steam, gamescope, mangohud, gamemode, launchers
+    # - cachyos-gaming-applications: Steam, gamescope, mangohud
     pacman_install cachyos-gaming-meta cachyos-gaming-applications
+
+    # Wrapper for applications like Steam that allows games to request optimizations
+    # https://wiki.archlinux.org/title/GameMode
+    pacman_install gamemode lib32-gamemode
+    sudo usermod -aG gamemode $USER
+    systemctl --user enable --now gamemoded
+
+    # Create steam.desktop that will overshadow the original one
+    # so when running Steam via Rofi it will automatically be run via gamemode
+    STEAM_GLOBAL="/usr/share/applications/steam.desktop"
+    STEAM_USER="$HOME/.local/share/applications/steam.desktop"
+    cp "$STEAM_GLOBAL" "$STEAM_USER"
+    sed -i 's|^Exec=\(.*steam[^ ]*\)|Exec=gamemoderun \1|g' "$STEAM_USER"
+    update-desktop-database "$HOME/.local/share/applications"
 
     show_dialog_section_finished "Gaming"
 }
@@ -282,3 +294,5 @@ main() {
 }
 
 main "$@"
+
+echo "Type 'reboot' so all changes to usergroups etc. are finalized."

@@ -5,7 +5,7 @@
 # Find yours with: hyprctl monitors -j | jq '.[] | "\(.make) \(.model) \(.serial)"'
 
 # Example: External monitor (disable laptop)
-profile docked {
+profile external {
     output eDP-1 disable
     output "Dell Inc. DELL S2721DGF *" mode 2560x1440@143.91Hz position 0,0
 }
@@ -13,4 +13,13 @@ profile docked {
 # Laptop only (no external)
 profile laptop-only {
     output eDP-1 enable scale 1.8
+}
+
+profile single {
+    output DP-2 enable mode 2560x1440@165.08Hz position 0,0
+}
+
+profile dual {
+    output DP-2 enable mode 2560x1440@165.08Hz position 0,0
+    output DP-3 enable mode 2560x1440@165.08Hz position -2560,0
 }
