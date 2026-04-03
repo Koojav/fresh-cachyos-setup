@@ -173,7 +173,7 @@ function install_section_gpu {
 
     case "$gpu_type" in
         nvidia)
-            pacman_install nvidia nvidia-utils lib32-nvidia-utils nvidia-settings
+            pacman_install linux-cachyos-lts-nvidia-open nvidia-utils lib32-nvidia-utils nvidia-settings
             show_dialog_section_finished "$gpu_type drivers installed"
             ;;
         amd)
