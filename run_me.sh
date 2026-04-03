@@ -205,17 +205,10 @@ function install_section_gaming {
 
     # Wrapper for applications like Steam that allows games to request optimizations
     # https://wiki.archlinux.org/title/GameMode
+    # NOTE: Remember to add: gamemoderun %command% to Steam games' parameters
     pacman_install gamemode lib32-gamemode
     sudo usermod -aG gamemode $USER
     systemctl --user enable --now gamemoded
-
-    # Create steam.desktop that will overshadow the original one
-    # so when running Steam via Rofi it will automatically be run via gamemode
-    STEAM_GLOBAL="/usr/share/applications/steam.desktop"
-    STEAM_USER="$HOME/.local/share/applications/steam.desktop"
-    cp "$STEAM_GLOBAL" "$STEAM_USER"
-    sed -i 's|^Exec=\(.*steam[^ ]*\)|Exec=gamemoderun \1|g' "$STEAM_USER"
-    update-desktop-database "$HOME/.local/share/applications"
 
     show_dialog_section_finished "Gaming"
 }
