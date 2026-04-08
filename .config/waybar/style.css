@@ -14,20 +14,20 @@ window#waybar {
 
 .modules-left {
 	background-color: rgba(11, 14, 14, 0.35);
-    color: #c8c8c8;
-    margin: 5px 0px 5px 0px;
+    color: #c8c8c8; /* top right bottom left */
+    margin: 5px 5px 5px 5px; /* top right bottom left */
 }
 
 .modules-center {
 	background-color: rgba(11, 14, 14, 0.35);
     color: #c8c8c8;
-    margin: 5px 0px 5px 0px;
+    margin: 5px 0px 5px 0px; /* top right bottom left */
 }
 
 .modules-right {
-	background-color: rgba(11, 14, 14, 0.35);
+    background: transparent;
     color: #c8c8c8;
-    margin: 5px 5px 5px 0px;
+    margin: 5px 5px 5px 0px; /* top right bottom left */
 }
 
 /* Workspaces */
@@ -35,15 +35,11 @@ window#waybar {
 #workspaces button {
     padding: 1px 5px;
     background: transparent;
-    background-image: none;
-    box-shadow: none;
     color: #c8c8c8;
 }
 
 #workspaces button:hover {
     background: rgba(11, 14, 14, 0.8);
-    background-image: none;
-    box-shadow: none;
     color: #FFFFFF;
 }
 
@@ -59,22 +55,39 @@ window#waybar {
 
 /* Other */
 
+#tray,
 #clock,
 #battery,
-#cpu,
-#memory,
-#temperature,
 #network,
 #pulseaudio,
 #custom-media,
-#tray,
-#mode,
-#custom-power,
-#custom-menu,
-#idle_inhibitor {
-    padding: 0 10px;
+#custom-hyprshot {
+    padding: 6px 10px;
+    margin: 0px 2px;
+    border: 1px solid;
+	background-color: rgba(11, 14, 14, 0.35);
+    border: 1px solid rgba(200, 200, 200, 0);
+    border-radius: 5px;
 }
-#mode {
-    color: #cc3436;
+
+#submap {    
+    padding: 6px 10px;
+    margin: 0px 2px;
+    border: 1px solid;
+	background-color: rgba(11, 14, 14, 0.35);
+    border: 1px solid rgba(200, 200, 200, 0);
+    border-radius: 5px;
+    color: #ad181a;
     font-weight: bold;
+    font-size: 11px;
+}
+
+#tray:hover,
+#clock:hover,
+#battery:hover,
+#network:hover,
+#pulseaudio:hover,
+#custom-media:hover,
+#custom-hyprshot:hover {
+    border: 1px solid rgba(200, 200, 200, 1);
 }

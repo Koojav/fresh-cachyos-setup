@@ -6,7 +6,9 @@
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": [],
+    "modules-left": [
+        "hyprland/submap"
+    ],
     "modules-center": [
         "hyprland/workspaces"
     ],
@@ -14,7 +16,6 @@
         "tray",
         "pulseaudio",
         "custom/hyprshot",
-        "custom/bluetooth",
         "network",
         "battery",
         "clock"
@@ -65,15 +66,12 @@
         "on-click": "pavucontrol"
     },
     "custom/hyprshot": {
-        "exec": "echo '󰄄  '",
+        "exec": "echo '󰄄'",
         "interval": 3600,
         "tooltip": "Take screenshot",
         "on-click": "hyprshot-gui --clipboard-only"
     },
-    "custom/bluetooth": {
-        "exec": "echo '󰂯  '",
-        "interval": 3600,
-        "tooltip": "Open Bluetooth manager",
-        "on-click": "blueman-manager"
+    "hyprland/submap": {
+        "format": "󰘲 {}"
     }
 }
