@@ -19,7 +19,7 @@ window#waybar {
 }
 
 .modules-center {
-	background-color: rgba(11, 14, 14, 0.35);
+    background: transparent;
     color: #c8c8c8;
     margin: 5px 0px 5px 0px; /* top right bottom left */
 }
@@ -33,14 +33,19 @@ window#waybar {
 /* Workspaces */
 
 #workspaces button {
-    padding: 1px 5px;
-    background: transparent;
-    color: #c8c8c8;
+    padding: 4px 8px;
+    margin: 0px 2px;
+    color: #C8C8C8;
+    box-shadow: none;
+    background-image: none;
+	background-color: rgba(11, 14, 14, 0.35);
+    border: 2px solid rgba(85, 90, 97, 0);
+    border-radius: 5px;
 }
 
 #workspaces button:hover {
-    background: rgba(11, 14, 14, 0.8);
     color: #FFFFFF;
+    border: 2px solid rgba(85, 90, 97, 1);
 }
 
 #workspaces button.focused, #workspaces button.active {
@@ -62,22 +67,21 @@ window#waybar {
 #pulseaudio,
 #custom-media,
 #custom-hyprshot {
-    padding: 6px 10px;
+    padding: 4px 10px;
     margin: 0px 2px;
 	background-color: rgba(11, 14, 14, 0.35);
-    border: 2px solid rgba(200, 200, 200, 0);
+    border: 2px solid rgba(85, 90, 97, 0);
     border-radius: 5px;
 }
 
 #submap {    
-    padding: 6px 10px;
+    padding: 4px 10px;
     margin: 0px 2px;
 	background-color: rgba(11, 14, 14, 0.35);
-    border: 2px solid rgba(200, 200, 200, 0);
+    border: 2px solid rgb(223, 127, 39);
     border-radius: 5px;
-    color: #ad181a;
+    color: rgb(223, 127, 39);
     font-weight: bold;
-    font-size: 11px;
 }
 
 #tray:hover,
