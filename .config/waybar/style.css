@@ -1,7 +1,7 @@
 * {
     border: none;
     font-family: FiraCode Nerd Font;
-    font-size: 11px;
+    font-size: 13px;
     border-radius: 5px;
 }
 
@@ -78,9 +78,9 @@ window#waybar {
     padding: 4px 10px;
     margin: 0px 2px;
 	background-color: rgba(11, 14, 14, 0.35);
-    border: 2px solid rgb(223, 127, 39);
+    border: 2px solid rgba(254, 128, 25, 1);
     border-radius: 5px;
-    color: rgb(223, 127, 39);
+    color: rgba(254, 128, 25, 1);
     font-weight: bold;
 }
 
