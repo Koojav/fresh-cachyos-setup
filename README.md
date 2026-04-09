@@ -107,6 +107,14 @@ Please see `.config/starship.toml` file and [the official Website](https://stars
 Responsible for single and multi-monitor setups.  
 Please see `.config/kanshi/config` file and [the official Arch Wiki](https://wiki.archlinux.org/title/Kanshi).
 
+## Kitty
+Responsible for terminal emulation.  
+Please see:  
+- `.config/kitty/colors_gruvbox_dark` for color definitions
+- `.config/kitty/kitty.conf` for layout and other settings  
+
+Also [the official Kitty Website](https://sw.kovidgoyal.net/kitty/).
+
 # Additional info
 
 ## Running games on Steam 
