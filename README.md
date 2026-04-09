@@ -45,7 +45,7 @@ Following shit has been configured for you:
 - [x] `hyprpolkitagent` : required for GUI to request elevated privileges
 - [x] `hyprlock` `hypridle` : Idle state registration, screen locking etc.
 - [x] `brightnessctl` `gammastep` : control screen brightness and night light
-- [x] `rofi` : customizable launcher
+- [x] `rofi` : customizable application launcher and window selector
 - [x] `hyprpaper` : wallpaper utility
 - [x] `hyprpicker` : color picker, comes in handy
 - [x] `hyprshot` `hyprshot-gui` : screenshot utility with optional GUI
