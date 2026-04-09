@@ -19,7 +19,7 @@ Download from [here](https://cachyos.org/download/) and install with following c
 ```
 cd ~ \
    && git clone https://github.com/Koojav/fresh-cachyos-setup.git \
-   && cd ~/fresh-cachyos-setup \
+   && cd fresh-cachyos-setup \
    && chmod +x run_me.sh \
    && ./run_me.sh
 ```
