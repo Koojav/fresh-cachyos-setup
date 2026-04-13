@@ -21,6 +21,12 @@ if type -q pyenv
     pyenv init - | source
 end
 
+# Add SSH key to SSH Agent
+if not ssh-add -l &>/dev/null
+    eval (ssh-agent -c)
+    ssh-add ~/.ssh/id_rsa
+end
+
 # To learn about prompt customization visit: https://starship.rs/config/
 starship init fish | source 
 
