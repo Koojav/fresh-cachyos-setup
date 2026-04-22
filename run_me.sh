@@ -37,6 +37,8 @@ function install_section_core {
 
     # Tailscale VPN
     pacman_install tailscale
+    # https://tailscale.com/docs/reference/linux-dns#networkmanager--systemd-resolved
+    sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
     sudo systemctl enable --now tailscaled
 
     # Starship
