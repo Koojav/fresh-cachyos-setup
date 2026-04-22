@@ -35,6 +35,10 @@ function install_section_core {
     # Nerd fonts
     aur_install extra/ttf-firacode-nerd
 
+    # Tailscale VPN
+    pacman_install tailscale
+    sudo systemctl enable --now tailscaled
+
     # Starship
     curl -sS https://starship.rs/install.sh | sh -s -- -y
 
