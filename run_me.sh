@@ -140,7 +140,8 @@ function install_section_dev {
 
     # Python related
     pacman_install tk python python-pip pyenv 
-
+    aur_install pyenv-virtualenv
+    
     # tldr command
     pacman_install tealdeer
     tldr --update

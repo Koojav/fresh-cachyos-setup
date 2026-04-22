@@ -6,20 +6,15 @@ function fish_greeting
 end
 
 # Pyenv root
-set -gx PYENV_ROOT $HOME/.pyenv
+set -Ux PYENV_ROOT $HOME/.pyenv
+# Add pyenv to PATH if not already present
+test -d $PYENV_ROOT/bin; and fish_add_path $PYENV_ROOT/bin
 
 # Disable virtualenv prompt changes
 set -gx PYENV_VIRTUALENV_DISABLE_PROMPT 1
 
-# Add pyenv to PATH if not already present
-if not contains $PYENV_ROOT/bin $PATH
-    set -gx PATH $PYENV_ROOT/bin $PATH
-end
-
 # Initialize pyenv for Fish
-if type -q pyenv
-    pyenv init - | source
-end
+pyenv init - fish | source
 
 # Add SSH key to SSH Agent
 if not ssh-add -l &>/dev/null
