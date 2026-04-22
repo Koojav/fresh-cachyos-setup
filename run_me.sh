@@ -126,6 +126,10 @@ function install_section_hyprland {
     # Run 'kanshi-setup' to detect your monitors if you want to modify the config
     cp -r "$(pwd)/.config/kanshi" ~/.config
 
+    # Power Menu (sleep, restart, logout, shutdown)
+    # https://github.com/ArtsyMacaw/wlogout
+    aur_install wlogout
+
     show_dialog_section_finished "Desktop Environment"
 }
 

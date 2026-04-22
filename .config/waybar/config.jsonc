@@ -18,7 +18,8 @@
         "custom/hyprshot",
         "network",
         "battery",
-        "clock"
+        "clock",
+        "custom/power"
     ],
     "tray": {
         "spacing": 8
@@ -70,6 +71,11 @@
         "interval": 3600,
         "tooltip": "Take screenshot",
         "on-click": "hyprshot-gui --clipboard-only"
+    },
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout --css ~/.config/wlogout/style.css --layout ~/.config/wlogout/layout.css",
+        "tooltip": false
     },
     "hyprland/submap": {
         "format": "󰘲 {}"

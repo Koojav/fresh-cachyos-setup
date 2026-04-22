@@ -2,7 +2,6 @@
     border: none;
     font-family: FiraCode Nerd Font;
     font-size: 13px;
-    border-radius: 5px;
 }
 
 /* Module groups */
@@ -66,7 +65,8 @@ window#waybar {
 #network,
 #pulseaudio,
 #custom-media,
-#custom-hyprshot {
+#custom-hyprshot,
+#custom-power {
     padding: 4px 10px;
     margin: 0px 2px;
 	background-color: rgba(11, 14, 14, 0.35);
@@ -90,6 +90,7 @@ window#waybar {
 #network:hover,
 #pulseaudio:hover,
 #custom-media:hover,
-#custom-hyprshot:hover {
+#custom-hyprshot:hover,
+#custom-power:hover {
     border: 2px solid rgba(85, 90, 97, 1)
 }
