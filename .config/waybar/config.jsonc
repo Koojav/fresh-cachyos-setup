@@ -74,7 +74,7 @@
     },
     "custom/power": {
         "format": "⏻",
-        "on-click": "~/.config/wlogout/launch_wlogout.sh",
+        "on-click": "~/.config/wlogout/launch.sh",
         "tooltip": false
     },
     "hyprland/submap": {
