@@ -68,8 +68,11 @@ function install_section_hyprland {
     cp -r "$(pwd)/.config/gtk-3.0" ~/.config
     cp -r "$(pwd)/.config/gtk-4.0" ~/.config
 
-    # Fix file selector opened by VS Code
-    pacman_install xdg-desktop-portal xdg-desktop-portal-hyprland
+    # An XDG Desktop Portal is a program that lets other applications communicate 
+    # with the compositor through D-Bus. A portal implements certain functionalities, 
+    # such as opening file pickers or screen sharing.
+    # https://wiki.hypr.land/Hypr-Ecosystem/xdg-desktop-portal-hyprland/
+    pacman_install xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-hyprland
 
     # Hyprpolkitagent - required for GUI to request elevated privileges
     # https://wiki.hypr.land/Hypr-Ecosystem/hyprpolkitagent/
