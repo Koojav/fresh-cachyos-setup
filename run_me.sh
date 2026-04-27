@@ -259,10 +259,6 @@ show_dialog_menu() {
     echo "$choices"
 }
 
-function show_dialog_done() {
-    dialog --title " Complete " --msgbox "\nAll done! Press Enter to exit.\n" 7 45
-}
-
 install_sections() {
     local indices="$1"
 

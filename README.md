@@ -72,7 +72,7 @@ Following shit has been configured for you:
 ### Gaming
 
 - [x] `cachyos-gaming-meta` `cachyos-gaming-applications` : Steam, gamescope, mangohud
-- [x] `gamemode` : Wrapper for applications like Steam that allows games to request optimizations. I
+- [x] `gamemode` : Wrapper for applications like Steam that allows games to request optimizations.  
 
 ⚠️ **Important** ⚠️ see also [Running games on Steam](#running-games-on-steam) section.  
 
