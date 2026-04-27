@@ -72,7 +72,8 @@ function install_section_hyprland {
     # with the compositor through D-Bus. A portal implements certain functionalities, 
     # such as opening file pickers or screen sharing.
     # https://wiki.hypr.land/Hypr-Ecosystem/xdg-desktop-portal-hyprland/
-    pacman_install xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-hyprland
+    pacman_install xdg-desktop-portal xdg-desktop-portal-hyprland
+    cp -r "$(pwd)/.config/xdg-desktop-portal" ~/.config
 
     # Hyprpolkitagent - required for GUI to request elevated privileges
     # https://wiki.hypr.land/Hypr-Ecosystem/hyprpolkitagent/
@@ -113,6 +114,7 @@ function install_section_hyprland {
     # Screen share picker
     # https://github.com/WhySoBad/hyprland-preview-share-picker
     aur_install hyprland-preview-share-picker-git
+    cp -r "$(pwd)/.config/hyprland-preview-share-picker" ~/.config
 
     # Control panel
     aur_install better-control-git
