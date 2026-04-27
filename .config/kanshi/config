@@ -1,5 +1,5 @@
 # Kanshi - Wayland display profile manager
-# Run 'kanshi-setup' to detect your monitors and get profile suggestions
+# Run 'hyprctl monitors' to detect your monitors and get profile suggestions
 #
 # Identifier format: "Make Model *" (wildcard for serial)
 # Find yours with: hyprctl monitors -j | jq '.[] | "\(.make) \(.model) \(.serial)"'

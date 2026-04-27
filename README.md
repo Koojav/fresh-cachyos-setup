@@ -72,7 +72,9 @@ Following shit has been configured for you:
 ### Gaming
 
 - [x] `cachyos-gaming-meta` `cachyos-gaming-applications` : Steam, gamescope, mangohud
-- [x] `gamemode` : Wrapper for applications like Steam that allows games to request optimizations
+- [x] `gamemode` : Wrapper for applications like Steam that allows games to request optimizations. I
+
+⚠️ **Important** ⚠️ see also [Running games on Steam](#running-games-on-steam) section.  
 
 ### Communicators
 
@@ -97,7 +99,7 @@ Please see `.config/waybar` folder and [the official Github](https://github.com/
 
 ## Rofi
 Responsible for launcher - searching and running aps via SUPER shortcut.  
-Please see `.config/rofi` folder and [the official Github](https://github.com/alexays/waybar).
+Please see `.config/rofi` folder and [the official Github](https://github.com/davatorium/rofi).
 
 ## Starship
 Responsible for prompt look and functionality.  
@@ -114,6 +116,10 @@ Please see:
 - `.config/kitty/kitty.conf` for layout and other settings  
 
 Also [the official Kitty Website](https://sw.kovidgoyal.net/kitty/).
+
+## Wlogout
+Power menu (logout, sleep, reboot, shutdown).  
+Please see `.config/wlogout` and [the official Github](https://github.com/ArtsyMacaw/wlogout).
 
 # Additional info
 

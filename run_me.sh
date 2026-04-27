@@ -14,6 +14,10 @@ SECTIONS=("core" "hyprland" "dev" "gpu" "gaming" "comms")
 # Prerequisites
 # =============================================================================
 
+# Base packages
+pacman_update
+pacman_upgrade
+
 # Install paru to access AUR (Arch User Repository)
 # Install dialog to display dialog windows with choices in text interface
 pacman_install paru dialog
@@ -24,10 +28,6 @@ pacman_install paru dialog
 
 function install_section_core {
     show_dialog_section_begin "Core" "Fonts, pretty terminal"
-
-    # Base packages
-    pacman_update
-    pacman_upgrade
 
     # Google Chrome
     aur_install google-chrome
@@ -48,9 +48,9 @@ function install_section_core {
     pacman_install fzf
 
     # Copy config files
-    mkdir -p ~/.config && cp "$(pwd)/.config/starship.toml" ~/.config/starship.toml
-    cp -r "$(pwd)/.config/fish" ~/.config
-    cp -r "$(pwd)/.config/kitty" ~/.config
+    mkdir -p ~/.config && cp "$SCRIPT_DIR/.config/starship.toml" ~/.config/starship.toml
+    cp -r "$SCRIPT_DIR/.config/fish" ~/.config
+    cp -r "$SCRIPT_DIR/.config/kitty" ~/.config
 
     show_dialog_section_finished "Core"
 }
@@ -62,11 +62,11 @@ function install_section_core {
 function install_section_hyprland {
     show_dialog_section_begin "Desktop Environment" "Hyprland related modifications"
 
-    cp -r "$(pwd)/.config/hypr" ~/.config
+    cp -r "$SCRIPT_DIR/.config/hypr" ~/.config
 
     # Copy GTK 3.0 and GTK 4.0 (GUI frameworks) settings
-    cp -r "$(pwd)/.config/gtk-3.0" ~/.config
-    cp -r "$(pwd)/.config/gtk-4.0" ~/.config
+    cp -r "$SCRIPT_DIR/.config/gtk-3.0" ~/.config
+    cp -r "$SCRIPT_DIR/.config/gtk-4.0" ~/.config
 
     # An XDG Desktop Portal is a program that lets other applications communicate 
     # with the compositor through D-Bus. A portal implements certain functionalities, 
@@ -91,7 +91,7 @@ function install_section_hyprland {
     # Customized via .config/rofi 
     # See: https://github.com/adi1090x/rofi/tree/master?tab=readme-ov-file for sample themes and applets
     pacman_install rofi-wayland
-    cp -r "$(pwd)/.config/rofi" ~/.config
+    cp -r "$SCRIPT_DIR/.config/rofi" ~/.config
 
     # Simple wallpaper utility
     pacman_install hyprpaper
@@ -108,7 +108,7 @@ function install_section_hyprland {
     # Customizable info bar
     sudo usermod -aG input $USER
     pacman_install waybar
-    cp -r "$(pwd)/.config/waybar" ~/.config
+    cp -r "$SCRIPT_DIR/.config/waybar" ~/.config
 
     # Screen share picker
     # https://github.com/WhySoBad/hyprland-preview-share-picker
@@ -125,9 +125,7 @@ function install_section_hyprland {
     # pure Hyprland does not allow conditional settings
     # eg. turn off laptop screen when docked
     pacman_install kanshi
-
-    # Run 'kanshi-setup' to detect your monitors if you want to modify the config
-    cp -r "$(pwd)/.config/kanshi" ~/.config
+    cp -r "$SCRIPT_DIR/.config/kanshi" ~/.config
 
     # Power Menu (sleep, restart, logout, shutdown)
     # https://github.com/ArtsyMacaw/wlogout
@@ -199,7 +197,7 @@ function install_section_gpu {
             show_dialog_section_finished "$gpu_type drivers installed"
             ;;
         *)
-            show_dialog_section_finished "$GPU NOT DETECTED - INSTALL DRIVERS MANUALLY"
+            show_dialog_section_finished "GPU NOT DETECTED - INSTALL DRIVERS MANUALLY"
             return 1
             ;;
     esac 
@@ -219,7 +217,9 @@ function install_section_gaming {
 
     # Wrapper for applications like Steam that allows games to request optimizations
     # https://wiki.archlinux.org/title/GameMode
-    # NOTE: Remember to add: gamemoderun %command% to Steam games' parameters
+    # NOTE: Remember to add: 
+    # gamemoderun PROTON_ENABLE_NVAPI=1 DXVK_ENABLE_NVAPI=1 DXVK_NVAPI_ALLOW_OTHER_DRIVERS=1 %command%
+    # to Steam games' parameters
     pacman_install gamemode lib32-gamemode
     sudo usermod -aG gamemode $USER
     systemctl --user enable --now gamemoded
@@ -247,7 +247,7 @@ show_dialog_menu() {
     local args=()
     args+=("ALL" ">>> Install everything <<<" "OFF")
     for i in "${!SECTIONS[@]}"; do
-        args+=("$((i+1))" "${SECTIONS[i]} - ${DESCRIPTIONS[i]}" "OFF")
+        args+=("$((i+1))" "${SECTIONS[i]}" "OFF")
     done
 
     local choices
