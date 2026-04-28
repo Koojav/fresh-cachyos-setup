@@ -81,6 +81,10 @@ Following shit has been configured for you:
 - [x] `Vesktop` : Discord that shares less with Our Great Communist Overlords
 - [x] `Slack` : I don't want to talk about it
 
+### Simple Display Desktop Manager (SDDM)
+
+- [x] `Theme` : Initial login screen (differs from `hyprlock`) theme based on [Sphinx theme](https://github.com/TheCollectiveDevelopers/sphinx).
+
 # Post-installation customization
 When making changes remember to manually sync them between this repo and your `~/.config`.  
 This can be done by re-running `run_me.sh` or using a shortcut defined in `.config/hypr/conf/keybindings.conf`
