@@ -222,7 +222,6 @@ function install_section_gaming {
     # to Steam games' parameters
     pacman_install gamemode lib32-gamemode
     sudo usermod -aG gamemode $USER
-    systemctl --user enable --now gamemoded
 
     show_dialog_section_finished "Gaming"
 }
