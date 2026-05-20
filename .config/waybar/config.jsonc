@@ -1,7 +1,7 @@
 // -*- mode: jsonc -*-
 {
     "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "position": "bottom", // Waybar position (top|bottom|left|right)
     // "height": 46, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
@@ -67,7 +67,8 @@
         "format-wifi": "",
         "format-ethernet": "󰈀",
         "tooltip-format": "{ifname} via {gwaddr}",
-        "format-disconnected": "Disconnected ⚠"
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "better-control"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -94,11 +95,11 @@
         "tooltip": "Take screenshot",
         "on-click": "hyprshot-gui --clipboard-only"
     },
-    "custom/power": {
-        "format": "⏻",
-        "on-click": "~/.config/wlogout/launch.sh",
-        "tooltip": false
-    },
+    // "custom/power": {
+    //     "format": "⏻",
+    //     "on-click": "~/.config/wlogout/launch.sh",
+    //     "tooltip": false
+    // },
     "hyprland/submap": {
         "format": "󰘲 {}"
     }
