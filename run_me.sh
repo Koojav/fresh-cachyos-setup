@@ -139,6 +139,12 @@ function install_section_hyprland {
     aur_install wlogout
     cp -r "$SCRIPT_DIR/.config/wlogout" ~/.config
 
+    # Gnome Calculator
+    pacman_install gnome-calculator
+
+    # QT5 and QT6 support
+    pacman_install qt5-wayland qt6-wayland
+
     show_dialog_section_finished "Desktop Environment"
 }
 
