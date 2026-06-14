@@ -145,6 +145,9 @@ function install_section_hyprland {
     # QT5 and QT6 support
     pacman_install qt5-wayland qt6-wayland
 
+    # File manager to replace Dolphin
+    pacman_install tumbler thunar
+
     show_dialog_section_finished "Desktop Environment"
 }
 
